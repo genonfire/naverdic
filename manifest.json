@@ -1,24 +1,36 @@
 {
-  "manifest_version": 2,
-
-  "name": "네이버 사전",
-  "description": "웹페이지에서 영어 단어에 더블클릭하면 네이버 사전을 통해 단어의 뜻을 보여줍니다.",
-  "version": "0.1",
-    "icons": {
-      "128": "icon.png",
-      "48": "icon.png",
-      "16": "icon.png"
-   },
-
+  "background": {
+    "scripts": ["background.js", "jquery-3.1.1.min.js"],
+    "persistent": false
+  },
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_title": "Naver Dic"
+  },
+  "icons": {
+    "128": "icon.png",
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png"
   },
   "permissions": [
-    "activeTab",
+    "storage",
     "tabs",
-    "http://endic.naver.com/",
-    "http://dic.dn.naver.com/"
+    "activeTab",
+    "http://endic.naver.com/*"
   ],
-  "manifest_version": 2
+  "content_scripts": [{
+    "matches": [ "*://*/*" ],
+    "js": ["content.js", "jquery-3.1.1.min.js"],
+    "run_at": "document_idle",
+    "all_frames": true
+  }],
+  "content_security_policy": "script-src 'self'; object-src 'self';",
+  "manifest_version": 2,
+  "name": "네이버 사전",
+  "options_page": "options.html",
+  "description": "웹페이지에서 영어 단어에 더블클릭하면 네이버 사전을 통해 단어의 뜻을 보여줍니다.",
+  "web_accessible_resources": ["jquery-3.1.1.min.js"],
+  "version": "0.1"
 }
