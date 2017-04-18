@@ -7,7 +7,7 @@ function translateWord(word, x, y) {
     action: 'xhttp',
     url: queryURL,
     }, function(data) {
-      if (data.indexOf('<h3>') != -1)  {
+      if (data.indexOf('<h3') != -1)  {
         manipulated = makeFrameData(data);
         showFrame(manipulated, x, y);
       }
@@ -20,7 +20,7 @@ function showFrame(datain, x, y) {
     id: 'popupFrame',
     class: 'popupFrame',
     html: datain,
-    style: "position:absolute;top:" + x + "px;left:" + y + "px;width:360px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;box-shadow:0 0 3px 3px #888;"
+    style: "position:absolute;top:" + x + "px;left:" + y + "px;width:360px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;font-size: 9pt;box-shadow:0 0 3px 3px #888;"
   }).appendTo('body');
 
   $('#popupFrame').bind('click', singleClickOnPopup);
@@ -40,9 +40,24 @@ function makeFrameData(datain) {
       break;
     }
     var trashtail = data.indexOf('</a>', trashhead);
+
     var datapart1 = data.substring(0, trashhead);
     var datapart2 = data.substring(trashtail + 4);
     data = datapart1 + datapart2;
+  }
+
+  while(true) {
+    var aopenhead = data.indexOf('<a href');
+    if (aopenhead == -1) {
+      break;
+    }
+    var aopentail = data.indexOf('">', aopenhead);
+    var aclose = data.indexOf('</a>', aopentail);
+
+    var datapart1 = data.substring(0, aopenhead);
+    var datapart2 = data.substring(aopentail + 2, aclose);
+    var datapart3 = data.substring(aclose + 4);
+    data = datapart1 + datapart2 + datapart3;
   }
 
   var wordhead = data.indexOf('<div class="box_a');
@@ -50,6 +65,7 @@ function makeFrameData(datain) {
     return data;
   }
   var wordtail = data.indexOf('</div>', wordhead);
+
   var datapart = data.substring(0, wordtail + 6);
   data = datapart + "</div></div>";
 
@@ -57,16 +73,18 @@ function makeFrameData(datain) {
 }
 
 var doubleClick = function(e) {
-  if (e.ctrlKey || e.altKey)
+  if (e.ctrlKey || e.altKey) {
     return;
+  }
 
   var selection = window.getSelection();
   if (selection.rangeCount > 0) {
       var range = selection.getRangeAt(0);
       var text = range.cloneContents().textContent;
       var english = /^[A-Za-z0-9]*$/;
-      if (english.test(text[0]))
+      if (english.test(text[0])) {
         translateWord(text.toLowerCase(), e.clientX, e.clientY);
+      }
   }
 }
 
