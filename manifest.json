@@ -32,5 +32,5 @@
   "options_page": "options.html",
   "description": "웹페이지에서 영어 단어에 더블클릭하면 네이버 사전을 통해 단어의 뜻을 보여줍니다.",
   "web_accessible_resources": ["jquery-3.1.1.min.js"],
-  "version": "0.4"
+  "version": "0.5"
 }

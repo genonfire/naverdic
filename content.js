@@ -12,7 +12,6 @@ function translateWord(word, x, y) {
         showFrame(manipulated, x, y);
       }
   })
-  // chrome.runtime.sendMessage({"message": "open_new_tab", "url": chrome.runtime.getURL('options.html')});
 }
 
 function showFrame(datain, top, left) {
@@ -82,24 +81,48 @@ function makeFrameData(datain) {
 }
 
 var doubleClick = function(e) {
-  if (e.ctrlKey || e.altKey) {
-    return;
-  }
-  var top = e.clientY + $(document).scrollTop() +20;
-  var left = e.clientX - 180 + $(document).scrollLeft();
-  if (e.clientX - 180 < 10)
-    left = 10 + $(document).scrollLeft();
-  // console.log("top: " + e.clientY + ", left: " + e.clientX + ", offset("+$(document).scrollTop()+","+$(document).scrollLeft()+")");
+  chrome.storage.sync.get({
+    trigger_key: 'none'
+  }, function(items) {
+    // console.log("ctrl:" + e.ctrlKey + ", alt:", e.altKey + ", trigger_key: " + items.trigger_key);
+    switch(items.trigger_key) {
+      case 'ctrl':
+        if (!e.ctrlKey || e.altKey)
+          return;
+        break;
+      case 'alt':
+        console.log('alt');
+        if (e.ctrlKey || !e.altKey)
+          return;
+        break;
+      case 'ctrlalt':
+        if (!e.ctrlKey || !e.altKey)
+          return;
+        break;
+      case 'none':
+        console.log('none');
+      default:
+        if (e.ctrlKey || e.altKey)
+          return;
+        break;
+    }
 
-  var selection = window.getSelection();
-  if (selection.rangeCount > 0) {
-      var range = selection.getRangeAt(0);
-      var text = range.cloneContents().textContent;
-      var english = /^[A-Za-z0-9]*$/;
-      if (english.test(text[0])) {
-        translateWord(text.toLowerCase(), top, left);
-      }
-  }
+    var top = e.clientY + $(document).scrollTop() +20;
+    var left = e.clientX - 180 + $(document).scrollLeft();
+    if (e.clientX - 180 < 10)
+      left = 10 + $(document).scrollLeft();
+    // console.log("top: " + e.clientY + ", left: " + e.clientX + ", offset("+$(document).scrollTop()+","+$(document).scrollLeft()+")");
+
+    var selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        var range = selection.getRangeAt(0);
+        var text = range.cloneContents().textContent;
+        var english = /^[A-Za-z0-9]*$/;
+        if (english.test(text[0])) {
+          translateWord(text.toLowerCase(), top, left);
+        }
+    }
+  });
 }
 
 var singleClick = function(e) {

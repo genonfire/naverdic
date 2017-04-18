@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Naver Dic Options</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    td {
+      padding: 10px; padding-left: 1px; padding-right: 1px;
+    }
+    span.text_desc {
+      margin-top:10px;
+      margin-left: 10px;
+      display:inline-block;
+    }
+    select {
+      height: 25px;
+      line-height: 25px;
+      margin-left: 10px;
+    }
+    div.option_save_area {
+      margin-top: 20px;
+      margin-left: 32px;
+    }
+    button.option_save {
+      width: 60px;
+      height: 30px;
+      background-color: #48E;
+      font-size:11pt;
+      color:white;
+    }
+    button.option_reset {
+      margin-left: 4px;
+      width: 60px;
+      height: 30px;
+      font-size:11pt;
+    }
+    a:link {color:#417690; text-decoration:none;}
+    a:visited {color:#417690; text-decoration:none;}
+    a:hover {color:#be131c; text-decoration:none;}
+    </style>
+  </head>
+  <body>
+    <p style="margin-top:40px"></p>
+    <div align="center">
+    <table width="640px" bgcolor="#EEEEEE">
+    <tr>
+        <td align="center" height="30px" bgcolor="#417690" colspan="2"><img style="vertical-align:bottom" src="./icon.png"><span style="vertical-align:bottom"><font size="5" color="#F4F382"><font color="#3FD036">aver Dic</font> Options</font></span></td>
+    </tr>
+    <tr>
+        <td align="center" width="200px"><b>팝업 뜨는 방식</b></td>
+        <td align="left">웹 페이지에서 단어 선택하는 방식<br>
+          <span class="text_desc">
+          트리거 키: <select id="trigger_key">
+            <option value="none">더블 클릭</option>
+            <option value="ctrl">ctrl + 더블 클릭</option>
+            <option value="alt">alt + 더블 클릭</option>
+            <option value="ctrlalt">ctrl + alt + 더블 클릭</option>
+          </select>
+          </span>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" height="60px" colspan="2">
+        <div class="option_save_area">
+          <button id="option_save" class="option_save">저장</button>
+          <span id="option_save_status" visible="hide"></span>
+        </div>
+        </td>
+    </tr>
+    </table>
+    </div>
+    <script src="options.js"></script>
+  </body>
+</html>
