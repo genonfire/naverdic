@@ -15,12 +15,12 @@ function translateWord(word, x, y) {
   // chrome.runtime.sendMessage({"message": "open_new_tab", "url": chrome.runtime.getURL('options.html')});
 }
 
-function showFrame(datain, x, y) {
+function showFrame(datain, top, left) {
   $('<div/>', {
     id: 'popupFrame',
     class: 'popupFrame',
     html: datain,
-    style: "position:absolute;top:" + x + "px;left:" + y + "px;width:360px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;font-size: 9pt;box-shadow:0 0 3px 3px #888;"
+    style: "position:absolute;top:" + top + "px;left:" + left + "px;width:360px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;font-size: 9pt;box-shadow:0 0 3px 3px #888;"
   }).appendTo('body');
 
   $('#popupFrame').bind('click', singleClickOnPopup);
@@ -60,6 +60,15 @@ function makeFrameData(datain) {
     data = datapart1 + datapart2 + datapart3;
   }
 
+  var lasthead = data.indexOf('<dt class="last');
+  if (lasthead != -1) {
+    var lasttail = data.indexOf('</dt>', lasthead);
+
+    var datapart1 = data.substring(0, lasthead);
+    var datapart2 = data.substring(lasttail + 5);
+    data = datapart1 + datapart2;
+  }
+
   var wordhead = data.indexOf('<div class="box_a');
   if (wordhead == -1) {
     return data;
@@ -76,6 +85,11 @@ var doubleClick = function(e) {
   if (e.ctrlKey || e.altKey) {
     return;
   }
+  var top = e.clientY + $(document).scrollTop() +20;
+  var left = e.clientX - 180 + $(document).scrollLeft();
+  if (e.clientX - 180 < 10)
+    left = 10 + $(document).scrollLeft();
+  // console.log("top: " + e.clientY + ", left: " + e.clientX + ", offset("+$(document).scrollTop()+","+$(document).scrollLeft()+")");
 
   var selection = window.getSelection();
   if (selection.rangeCount > 0) {
@@ -83,7 +97,7 @@ var doubleClick = function(e) {
       var text = range.cloneContents().textContent;
       var english = /^[A-Za-z0-9]*$/;
       if (english.test(text[0])) {
-        translateWord(text.toLowerCase(), e.clientX, e.clientY);
+        translateWord(text.toLowerCase(), top, left);
       }
   }
 }
