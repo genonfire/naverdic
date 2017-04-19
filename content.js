@@ -32,6 +32,7 @@ function singleClickOnPopup(e) {
 function makeFrameData(datain) {
   var data = datain.replace(/<a href="/gi, '<a href="http://endic.naver.com');
   data = data.replace(/http:\/\/dicimg.naver.net\/endic\/img\/btn_guide.gif/gi, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAQCAIAAABocZPBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAAAf0lEQVQ4T72OyxXAIAgE01P6b8N2EmSRp4Caj8mcEJaRLa0mG491/GXcC/pEQaBvkBlz6UazY5gY+csGNDENMdPujXUui9s1M5WKiY0IadTsEDeMNPbpugN8RolvnKIW/1lgpJBHZgXfUWKjVAXtZHcHBIiHNw4IjC/5zLiSlE6khUhjbxE10wAAAABJRU5ErkJggg==');
+  data = data.replace(/http:\/\/dicimg.naver.net\/endic\/img\/btn_syn.gif/gi, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAQCAIAAADxiUp0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAAAiklEQVQ4T82PQQqAMBAD/bYP8R++xXNP/kJ6sVIIYTdbFLEV5rAmwaHTlvZuXLIj5w6Mls3L6vEtJ3w3Wi3jT0b+xR9R+AOZBxXPoiMKhQzwDpSwwok56g0QWhmPDNgYUPFGhq2X3eStrCyYKAdoeelDIeM6ShjjqHCC+9nLJO0Bt1r2ESNknUj7CV29/v0DruQhAAAAAElFTkSuQmCC');
 
   while(true) {
     var trashhead = data.indexOf('<a id="pron_en"');
