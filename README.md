@@ -6,8 +6,7 @@ Chrome 확장 프로그램
 # 설치
 Chrome 웹 스토어에서 설치하세요.
 
-https://chrome.google.com/webstore/detail/%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%82%AC%EC%A0%84-naver-dictionary/imnbhbjodhdinfaifjbpgkpknejadfjk
-
+https://chrome.google.com/webstore/detail/네이버-사전-naver-dictionary/imnbhbjodhdinfaifjbpgkpknejadfjk
 
 # 스크린샷
 ![screenshot](./docs/naverdic1.png?raw=true "screenshot")
