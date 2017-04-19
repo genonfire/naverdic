@@ -10,6 +10,7 @@
     }
     span.text_desc {
       margin-top:10px;
+      margin-bottom: 10px;
       margin-left: 10px;
       display:inline-block;
     }
@@ -17,6 +18,10 @@
       height: 25px;
       line-height: 25px;
       margin-left: 10px;
+    }
+    label {
+      margin-top:10px;
+      display:inline-block;
     }
     div.option_save_area {
       margin-top: 20px;
@@ -45,28 +50,62 @@
     <div align="center">
     <table width="640px" bgcolor="#EEEEEE">
     <tr>
-        <td align="center" height="30px" bgcolor="#417690" colspan="2"><img style="vertical-align:bottom" src="./icon.png"><span style="vertical-align:bottom"><font size="5" color="#F4F382"><font color="#3FD036">aver Dic</font> Options</font></span></td>
+      <td align="center" height="30px" bgcolor="#417690" colspan="2"><img style="vertical-align:bottom" src="./icon.png"><span style="vertical-align:bottom"><font size="5" color="#F4F382"><font color="#3FD036">aver Dic</font> Options</font></span></td>
     </tr>
     <tr>
-        <td align="center" width="200px"><b>팝업 뜨는 방식</b></td>
-        <td align="left">웹 페이지에서 단어 선택하는 방식<br>
-          <span class="text_desc">
-          트리거 키: <select id="trigger_key">
-            <option value="none">더블 클릭</option>
-            <option value="ctrl">ctrl + 더블 클릭</option>
-            <option value="alt">alt + 더블 클릭</option>
-            <option value="ctrlalt">ctrl + alt + 더블 클릭</option>
-          </select>
-          </span>
-        </td>
+      <td align="center" width="200px"><b>팝업 뜨는 방식</b></td>
+      <td align="left">
+        <label>
+          <input type="checkbox" id="check_dclick">단어를 더블 클릭했을 때 팝업을 보여줍니다.
+        </label>
+        <br>
+        <span class="text_desc">
+        트리거 키: <select id="dclick_trigger_key">
+          <option value="none">더블 클릭</option>
+          <option value="ctrl">ctrl + 더블 클릭</option>
+          <option value="alt">alt + 더블 클릭</option>
+          <option value="ctrlalt">ctrl + alt + 더블 클릭</option>
+        </select>
+        </span>
+
+        <br><label>
+          <input type="checkbox" id="check_drag">드래그하여 단어나 숙어를 선택했을 때 팝업을 보여줍니다.
+        </label>
+        <br>
+        <span class="text_desc">
+        트리거 키: <select id="drag_trigger_key">
+          <option value="none">드래그</option>
+          <option value="ctrl">ctrl + 드래그</option>
+          <option value="alt">alt + 드래그</option>
+          <option value="ctrlalt">ctrl + alt + 드래그</option>
+        </select>
+        </span>
+      </td>
     </tr>
+    <!-- <tr>
+      <td align="center" width="200px"><b>실험적인 기능</b></td>
+      <td align="left">
+        <label>
+          <input type="checkbox" id="check_translate">문장 번역 기능 사용
+        </label>
+        <br>
+        <span class="text_desc">
+        트리거 키: <select id="translate_trigger_key">
+          <option value="none">드래그</option>
+          <option value="ctrl">ctrl + 드래그</option>
+          <option value="alt">alt + 드래그</option>
+          <option value="ctrlalt">ctrl + alt + 드래그</option>
+        </select>
+        </span>
+      </td>
+    </tr> -->
     <tr>
-        <td align="left" valign="top" height="60px" colspan="2">
-        <div class="option_save_area">
-          <button id="option_save" class="option_save">저장</button>
-          <span id="option_save_status" visible="hide"></span>
-        </div>
-        </td>
+      <td align="left" valign="top" height="60px" colspan="2">
+      <div class="option_save_area">
+        <button id="option_save" class="option_save">저장</button>
+        <span id="option_save_status"></span>
+      </div>
+      </td>
     </tr>
     </table>
     </div>

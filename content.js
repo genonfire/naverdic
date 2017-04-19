@@ -22,11 +22,13 @@ function showFrame(datain, top, left) {
     style: "position:absolute;top:" + top + "px;left:" + left + "px;width:360px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;font-size: 9pt;box-shadow:0 0 3px 3px #888;"
   }).appendTo('body');
 
-  $('#popupFrame').bind('click', singleClickOnPopup);
-}
-
-function singleClickOnPopup(e) {
-  e.stopPropagation();
+  $('#popupFrame').on('mousedown', function(e) {
+    e.stopPropagation();
+  }).on('mousemove', function(e) {
+    e.stopPropagation();
+  }).on('mouseup', function(e) {
+    e.stopPropagation();
+  });
 }
 
 function makeFrameData(datain) {
@@ -81,74 +83,110 @@ function makeFrameData(datain) {
   return data;
 }
 
-var doubleClick = function(e) {
+var checkTrigger = function(e, key) {
+  switch(key) {
+    case 'ctrl':
+      if (!e.ctrlKey || e.altKey)
+        return false;
+      break;
+    case 'alt':
+      if (e.ctrlKey || !e.altKey)
+        return false;
+      break;
+    case 'ctrlalt':
+      if (!e.ctrlKey || !e.altKey)
+        return false;
+      break;
+    case 'none':
+    default:
+      if (e.ctrlKey || e.altKey)
+        return false;
+      break;
+  }
+
+  return true;
+}
+
+function openPopup(e) {
+  var marginX = 10;
+  var marginY = 20;
+  var top = e.clientY + $(document).scrollTop() + marginY;
+  var left = e.clientX - 180 + $(document).scrollLeft();
+  if (e.clientX - 180 < marginX)
+    left = marginX + $(document).scrollLeft();
+
+  var selection = window.getSelection();
+  if (selection.rangeCount > 0) {
+      var range = selection.getRangeAt(0);
+      var text = range.cloneContents().textContent.trim();
+      var english = /^[A-Za-z]*$/;
+      if (english.test(text[0]) && text.split(/\s+/).length < 4) {
+        translateWord(text.toLowerCase(), top, left);
+      }
+  }
+}
+
+function handleClick() {
   chrome.storage.sync.get({
-    trigger_key: 'none'
+    dclick: 'true',
+    dclick_trigger_key: 'none',
+    drag: 'true',
+    drag_trigger_key: 'ctrl'
   }, function(items) {
-    // console.log("ctrl:" + e.ctrlKey + ", alt:", e.altKey + ", trigger_key: " + items.trigger_key);
-    switch(items.trigger_key) {
-      case 'ctrl':
-        if (!e.ctrlKey || e.altKey)
-          return;
-        break;
-      case 'alt':
-        console.log('alt');
-        if (e.ctrlKey || !e.altKey)
-          return;
-        break;
-      case 'ctrlalt':
-        if (!e.ctrlKey || !e.altKey)
-          return;
-        break;
-      case 'none':
-        console.log('none');
-      default:
-        if (e.ctrlKey || e.altKey)
-          return;
-        break;
+    if (!items.dclick && !items.drag) {
+      console.log("disabled");
+      return;
     }
+    var mousedown = false;
+    var mousemove = false;
+    var scrollXOffset = 8;
+    var clicks = 0;
+    var timeout;
+    var prevX;
 
-    var top = e.clientY + $(document).scrollTop() +20;
-    var left = e.clientX - 180 + $(document).scrollLeft();
-    if (e.clientX - 180 < 10)
-      left = 10 + $(document).scrollLeft();
-    // console.log("top: " + e.clientY + ", left: " + e.clientX + ", offset("+$(document).scrollTop()+","+$(document).scrollLeft()+")");
+    $('body').on('mousedown', function(e) {
+      console.log("mousedown("+mousedown+")");
+      mousedown = true;
+      prevX = e.pageX;
+    });
 
-    var selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-        var range = selection.getRangeAt(0);
-        var text = range.cloneContents().textContent;
-        var english = /^[A-Za-z0-9]*$/;
-        if (english.test(text[0])) {
-          translateWord(text.toLowerCase(), top, left);
+    $('body').on('mousemove', function(e) {
+      if (!mousedown)
+        return;
+      if (Math.abs(e.pageX - prevX) > scrollXOffset)
+        mousemove = true;
+      console.log("mousemove("+Math.abs(e.pageX - prevX)+")");
+    });
+
+    $('body').on('mouseup', function(e) {
+      if (mousemove && items.drag && checkTrigger(e, items.drag_trigger_key)) {
+        console.log("mouseup after move, : "+mousedown+", "+mousemove);
+        mousedown = mousemove = false;
+        $('#popupFrame').remove();
+        openPopup(e)
+      }
+      else if (!mousemove && items.dclick && checkTrigger(e, items.dclick_trigger_key)) {
+        mousedown = false;
+        clicks++;
+
+        if (clicks == 1) {
+          timeout = setTimeout(function () {
+            $('#popupFrame').remove();
+            clicks = 0;
+          }, 400);
+        } else {
+          $('#popupFrame').remove();
+          clearTimeout(timeout);
+          openPopup(e)
+          clicks = 0;
         }
-    }
+      }
+      else {
+        mousedown = mousemove = false;
+        $('#popupFrame').remove();
+      }
+    });
   });
 }
 
-var singleClick = function(e) {
-  $('#popupFrame').remove();
-}
-
-var clickListener = function(e) {
-  var clicks = 0;
-  var timeout;
-
-  return function (e) {
-    clicks++;
-
-    if (clicks == 1) {
-      timeout = setTimeout(function () {
-        singleClick(e);
-        clicks = 0;
-      }, 400);
-    } else {
-      $('#popupFrame').remove();
-      clearTimeout(timeout);
-      doubleClick(e);
-      clicks = 0;
-    }
-  };
-}
-
-document.body.addEventListener('click', clickListener(), false);
+window.onload = handleClick;
