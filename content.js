@@ -126,7 +126,7 @@ function openPopup(e) {
   }
 }
 
-function handleClick() {
+function registerEventListener() {
   chrome.storage.sync.get({
     dclick: 'true',
     dclick_trigger_key: 'none',
@@ -185,4 +185,4 @@ function handleClick() {
   });
 }
 
-window.onload = handleClick;
+registerEventListener();
