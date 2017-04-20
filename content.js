@@ -134,7 +134,6 @@ function handleClick() {
     drag_trigger_key: 'ctrl'
   }, function(items) {
     if (!items.dclick && !items.drag) {
-      console.log("disabled");
       return;
     }
     var mousedown = false;
@@ -145,7 +144,6 @@ function handleClick() {
     var prevX;
 
     $('body').on('mousedown', function(e) {
-      console.log("mousedown("+mousedown+")");
       mousedown = true;
       prevX = e.pageX;
     });
@@ -155,12 +153,10 @@ function handleClick() {
         return;
       if (Math.abs(e.pageX - prevX) > scrollXOffset)
         mousemove = true;
-      console.log("mousemove("+Math.abs(e.pageX - prevX)+")");
     });
 
     $('body').on('mouseup', function(e) {
       if (mousemove && items.drag && checkTrigger(e, items.drag_trigger_key)) {
-        console.log("mouseup after move, : "+mousedown+", "+mousemove);
         mousedown = mousemove = false;
         $('#popupFrame').remove();
         openPopup(e)

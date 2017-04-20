@@ -9,10 +9,13 @@
       padding: 10px; padding-left: 1px; padding-right: 1px;
     }
     span.text_desc {
-      margin-top:10px;
+      margin-top: 10px;
       margin-bottom: 10px;
       margin-left: 10px;
       display:inline-block;
+    }
+    span.version_text {
+      margin-right: 10px;
     }
     select {
       height: 25px;
@@ -20,7 +23,7 @@
       margin-left: 10px;
     }
     label {
-      margin-top:10px;
+      margin-top: 5px;
       display:inline-block;
     }
     div.option_save_area {
@@ -31,7 +34,7 @@
       width: 60px;
       height: 30px;
       background-color: #48E;
-      font-size:11pt;
+      font-size: 11pt;
       color:white;
     }
     button.option_reset {
@@ -48,12 +51,17 @@
   <body>
     <p style="margin-top:40px"></p>
     <div align="center">
-    <table width="640px" bgcolor="#EEEEEE">
+    <table width="640px" bgcolor="#EEEEEE" style="box-shadow:0 0 30px 4px #888;">
     <tr>
-      <td align="center" height="30px" bgcolor="#417690" colspan="2"><img style="vertical-align:bottom" src="./icon.png"><span style="vertical-align:bottom"><font size="5" color="#F4F382"><font color="#3FD036">aver Dic</font> Options</font></span></td>
+      <td align="center" height="30px" bgcolor="#2E3139" colspan="2"><font size="5" color="#F4F382"><font color="#37C113" size="5">네이버</font><font size="5" color="#F4F382">사전</font> <font size="4" color="white">설정</font></td>
     </tr>
     <tr>
-      <td align="center" width="200px"><b>팝업 뜨는 방식</b></td>
+      <td colspan="2" align="right">
+        버전 <span id="version_text" class="version_text" align="right"></span> 
+      </td>
+    </tr>
+    <tr>
+      <td align="center" width="180px"><b>팝업 뜨는 방식</b></td>
       <td align="left">
         <label>
           <input type="checkbox" id="check_dclick">단어를 더블 클릭했을 때 팝업을 보여줍니다.

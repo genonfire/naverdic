@@ -65,6 +65,9 @@ function parseAndManipulate(datain) {
 }
 
 function onLoad() {
+  // var version = chrome.app.getDetails().version;
+  // var status = document.getElementById('version_text');
+  // status.textContent = version;
   document.getElementById("dic").focus();
 }
 

@@ -29,6 +29,10 @@ function restore_options() {
     document.getElementById('check_drag').checked = items.drag;
     document.getElementById('drag_trigger_key').value = items.drag_trigger_key;
   });
+
+  var version = chrome.app.getDetails().version;
+  var status = document.getElementById('version_text');
+  status.textContent = version;
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);
