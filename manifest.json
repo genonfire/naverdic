@@ -30,7 +30,7 @@
   "manifest_version": 2,
   "name": "네이버 사전 (Naver Dictionary)",
   "options_page": "options.html",
-  "description": "직접 단어를 입력하거나 웹페이지의 영어 단어에 더블클릭하면 네이버 사전을 통해 영단어의 뜻을 보여줍니다.",
+  "description": "직접 단어를 입력하거나 웹페이지의 영어 단어를 선택해 영단어의 뜻을 보여줍니다.",
   "web_accessible_resources": ["jquery-3.1.1.min.js"],
-  "version": "0.5"
+  "version": "1.0"
 }
