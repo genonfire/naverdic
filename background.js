@@ -20,7 +20,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, callback) {
         url: request.url,
         crossDomain: false,
         data: request.data,
-        headers: request.headers,
         success: function(data) {
           callback(data);
         },

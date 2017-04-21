@@ -1,9 +1,7 @@
 <?php
-  echo date("Y-m-d h:i:sa")."<br>";
   $client_id = $_POST['client_id'];
   $client_secret = $_POST['client_secret'];
   $encText = $_POST['text'];
-  echo "text: ".$encText."<br>";
   $postvars = "source=en&target=ko&text=".$encText;
   $url = "https://openapi.naver.com/v1/language/translate";
   $is_post = true;

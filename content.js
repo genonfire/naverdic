@@ -14,17 +14,17 @@ function searchWord(word, x, y) {
   })
 }
 
-function translateWord(phrase, x, y) {
-  var client_id = '';
-  var client_secret = '';
+function translateWord(phrase, x, y, naver_client_id, naver_client_secret) {
+  var client_id = naver_client_id;
+  var client_secret = naver_client_secret;
   var queryURL = 'http://gencode.me/api/navertrans/';
   var formData = "source=en&target=ko&client_id=" + client_id + "&client_secret=" + client_secret + "&text=" + phrase;
+  console.log(formData);
 
   chrome.runtime.sendMessage({
     method: 'POST',
     action: 'navertrans',
     data: formData,
-    headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret},
     url: queryURL,
     }, function(dataout) {
       var texthead = dataout.indexOf('{"translatedText":"');
@@ -127,7 +127,7 @@ var checkTrigger = function(e, key) {
   return true;
 }
 
-function openPopup(e, type = 'search') {
+function openPopup(e, naver_client_id, naver_client_secret, type = 'search') {
   var marginX = 10;
   var marginY = 20;
   var top = e.clientY + $(document).scrollTop() + marginY;
@@ -144,19 +144,21 @@ function openPopup(e, type = 'search') {
         searchWord(text.toLowerCase(), top, left);
       }
       else {
-        translateWord(text, top, left);
+        translateWord(text, top, left, naver_client_id, naver_client_secret);
       }
   }
 }
 
 function registerEventListener() {
   chrome.storage.sync.get({
-    dclick: 'true',
+    dclick: true,
     dclick_trigger_key: 'none',
-    drag: 'true',
+    drag: true,
     drag_trigger_key: 'ctrl',
-    translate: 'false',
-    translate_trigger_key: 'ctrlalt'
+    translate: false,
+    translate_trigger_key: 'ctrlalt',
+    naver_client_id: '',
+    naver_client_secret: ''
   }, function(items) {
     if (!items.dclick && !items.drag) {
       return;
@@ -184,12 +186,12 @@ function registerEventListener() {
       if (mousemove && items.drag && checkTrigger(e, items.drag_trigger_key)) {
         mousedown = mousemove = false;
         $('#popupFrame').remove();
-        openPopup(e);
+        openPopup(e, items.naver_client_id, items.naver_client_secret);
       }
       else if (mousemove && items.translate && checkTrigger(e, items.translate_trigger_key)) {
         mousedown = mousemove = false;
         $('#popupFrame').remove();
-        openPopup(e, 'translate');
+        openPopup(e, items.naver_client_id, items.naver_client_secret, 'translate');
       }
       else if (!mousemove && items.dclick && checkTrigger(e, items.dclick_trigger_key)) {
         mousedown = false;
@@ -203,7 +205,7 @@ function registerEventListener() {
         } else {
           $('#popupFrame').remove();
           clearTimeout(timeout);
-          openPopup(e);
+          openPopup(e, items.naver_client_id, items.naver_client_secret);
           clicks = 0;
         }
       }
