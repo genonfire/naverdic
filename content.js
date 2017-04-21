@@ -1,4 +1,4 @@
-function translateWord(word, x, y) {
+function searchWord(word, x, y) {
   noAudios = 0;
   var queryURL = "http://endic.naver.com/searchAssistDict.nhn?query=" + word;
   
@@ -11,6 +11,26 @@ function translateWord(word, x, y) {
         manipulated = makeFrameData(data);
         showFrame(manipulated, x, y);
       }
+  })
+}
+
+function translateWord(phrase, x, y) {
+  var client_id = 'Nkpw5YQGdsgzvidDr01y';
+  var client_secret = 'Wllc6qWb2g';
+  var queryURL = 'http://gencode.me/api/navertrans/';
+  var formData = "source=en&target=ko&client_id=" + client_id + "&client_secret=" + client_secret + "&text=" + phrase;
+
+  chrome.runtime.sendMessage({
+    method: 'POST',
+    action: 'navertrans',
+    data: formData,
+    headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret},
+    url: queryURL,
+    }, function(dataout) {
+      var texthead = dataout.indexOf('{"translatedText":"');
+      var texttail = dataout.indexOf('"}', texthead + 19);
+      var data = dataout.substring(texthead + 19, texttail);
+      showFrame(data, x, y);
   })
 }
 
@@ -107,7 +127,7 @@ var checkTrigger = function(e, key) {
   return true;
 }
 
-function openPopup(e) {
+function openPopup(e, type = 'search') {
   var marginX = 10;
   var marginY = 20;
   var top = e.clientY + $(document).scrollTop() + marginY;
@@ -121,7 +141,10 @@ function openPopup(e) {
       var text = range.cloneContents().textContent.trim();
       var english = /^[A-Za-z]*$/;
       if (english.test(text[0]) && text.split(/\s+/).length < 4) {
-        translateWord(text.toLowerCase(), top, left);
+        searchWord(text.toLowerCase(), top, left);
+      }
+      else {
+        translateWord(text, top, left);
       }
   }
 }
@@ -131,7 +154,9 @@ function registerEventListener() {
     dclick: 'true',
     dclick_trigger_key: 'none',
     drag: 'true',
-    drag_trigger_key: 'ctrl'
+    drag_trigger_key: 'ctrl',
+    translate: 'false',
+    translate_trigger_key: 'ctrlalt'
   }, function(items) {
     if (!items.dclick && !items.drag) {
       return;
@@ -159,7 +184,12 @@ function registerEventListener() {
       if (mousemove && items.drag && checkTrigger(e, items.drag_trigger_key)) {
         mousedown = mousemove = false;
         $('#popupFrame').remove();
-        openPopup(e)
+        openPopup(e);
+      }
+      else if (mousemove && items.translate && checkTrigger(e, items.translate_trigger_key)) {
+        mousedown = mousemove = false;
+        $('#popupFrame').remove();
+        openPopup(e, 'translate');
       }
       else if (!mousemove && items.dclick && checkTrigger(e, items.dclick_trigger_key)) {
         mousedown = false;
@@ -173,7 +203,7 @@ function registerEventListener() {
         } else {
           $('#popupFrame').remove();
           clearTimeout(timeout);
-          openPopup(e)
+          openPopup(e);
           clicks = 0;
         }
       }

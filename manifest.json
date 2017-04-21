@@ -18,7 +18,8 @@
     "storage",
     "tabs",
     "activeTab",
-    "http://endic.naver.com/*"
+    "http://endic.naver.com/*",
+    "https://openapi.naver.com/*"
   ],
   "content_scripts": [{
     "matches": [ "*://*/*" ],
