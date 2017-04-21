@@ -36,7 +36,6 @@ function restore_options() {
     naver_client_id: '',
     naver_client_secret: ''
   }, function(items) {
-    console.log(items.translate);
     document.getElementById('check_dclick').checked = items.dclick;
     document.getElementById('dclick_trigger_key').value = items.dclick_trigger_key;
     document.getElementById('check_drag').checked = items.drag;

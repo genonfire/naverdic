@@ -19,7 +19,6 @@ function translateWord(phrase, x, y, naver_client_id, naver_client_secret) {
   var client_secret = naver_client_secret;
   var queryURL = 'http://gencode.me/api/navertrans/';
   var formData = "source=en&target=ko&client_id=" + client_id + "&client_secret=" + client_secret + "&text=" + phrase;
-  console.log(formData);
 
   chrome.runtime.sendMessage({
     method: 'POST',
