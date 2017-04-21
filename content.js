@@ -15,8 +15,8 @@ function searchWord(word, x, y) {
 }
 
 function translateWord(phrase, x, y) {
-  var client_id = 'Nkpw5YQGdsgzvidDr01y';
-  var client_secret = 'Wllc6qWb2g';
+  var client_id = '';
+  var client_secret = '';
   var queryURL = 'http://gencode.me/api/navertrans/';
   var formData = "source=en&target=ko&client_id=" + client_id + "&client_secret=" + client_secret + "&text=" + phrase;
 
