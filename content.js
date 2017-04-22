@@ -142,7 +142,7 @@ function openPopup(e, naver_client_id, naver_client_secret, type = 'search') {
       if (english.test(text[0]) && text.split(/\s+/).length < 4) {
         searchWord(text.toLowerCase(), top, left);
       }
-      else {
+      else if (type == 'translate') {
         translateWord(text, top, left, naver_client_id, naver_client_secret);
       }
   }
