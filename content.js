@@ -38,7 +38,7 @@ function showFrame(datain, top, left) {
     id: 'popupFrame',
     class: 'popupFrame',
     html: datain,
-    style: "position:absolute;top:" + top + "px;left:" + left + "px;width:360px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;font-size: 9pt;box-shadow:0 0 3px 3px #888;"
+    style: "position:absolute;top:" + top + "px;left:" + left + "px;width:360px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;font-size: 9pt;color:black;box-shadow:0 0 3px 3px #888;"
   }).appendTo('body');
 
   $('#popupFrame').on('mousedown', function(e) {

@@ -37,5 +37,5 @@
   "name": "네이버 사전 (Naver Dictionary)",
   "description": "직접 단어를 입력하거나 웹페이지의 영어 단어를 선택해 영단어의 뜻을 보여줍니다.",
   "web_accessible_resources": ["jquery-3.1.1.min.js"],
-  "version": "1.7"
+  "version": "1.8"
 }
