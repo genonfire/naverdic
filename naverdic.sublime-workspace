@@ -1,0 +1,791 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"get",
+				"get_object_or_404"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/D/genonfire/git/chrome-extension/naverdic/popup.html",
+			"settings":
+			{
+				"buffer_size": 1697,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/genonfire/git/chrome-extension/naverdic/popup.js",
+			"settings":
+			{
+				"buffer_size": 2737,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "remove",
+		"selected_items":
+		[
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 280.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/genonfire/git/chrome-extension/naverdic"
+	],
+	"file_history":
+	[
+		"/D/genonfire/git/chrome-extension/naverdic/background.js",
+		"/D/genonfire/git/chrome-extension/naverdic/content.js",
+		"/D/genonfire/git/chrome-extension/naverdic/manifest.json",
+		"/D/genonfire/git/chrome-extension/naverdic/options.js",
+		"/D/genonfire/git/chrome-extension/naverdic/options.html",
+		"/D/genonfire/Documents/Sublime Text/naverdic.sublime-project",
+		"/D/genonfire/git/chrome-extension/naverdic/docs/index.php",
+		"/D/genonfire/git/chrome-extension/naverdic/popup.html",
+		"/D/genonfire/git/chrome-extension/naverdic/popup.js",
+		"/D/genonfire/git/chrome-extension/naverdic/README.md",
+		"/D/genonfire/git/chrome-extension/googledic/background.min.js",
+		"/D/genonfire/git/chrome-extension/googledic/options.html",
+		"/D/genonfire/git/chrome-extension/googledic/options.min.js",
+		"/D/genonfire/git/django/gengo/templates/base.html",
+		"/D/genonfire/git/django/gengo/templates/login.html",
+		"/D/genonfire/git/chrome-extension/googledic/options.min.css",
+		"/D/genonfire/git/chrome-extension/nd/optionPage.html",
+		"/D/genonfire/git/chrome-extension/naverdic/0.2",
+		"/D/genonfire/git/chrome-extension/naverdic/frame.css",
+		"/D/genonfire/git/chrome-extension/googledic/browser_action.min.js",
+		"/D/genonfire/git/chrome-extension/nd/js/common/message.js",
+		"/D/genonfire/git/chrome-extension/googledic/content.min.js",
+		"/D/genonfire/git/chrome-extension/nd/js/content/viewerManager.js",
+		"/D/genonfire/git/chrome-extension/naverdic/frame.html",
+		"/D/genonfire/git/chrome-extension/googledic/content.min.css",
+		"/D/genonfire/git/chrome-extension/nd/css/viewer.css",
+		"/D/genonfire/Downloads/ic_volume_up_black_18dp_1x.png",
+		"/D/genonfire/git/chrome-extension/nd/js/content/viewer.js",
+		"/D/genonfire/git/chrome-extension/nd/js/background/analyticsTracker.js",
+		"/D/genonfire/git/chrome-extension/googledic/mustache.js",
+		"/D/genonfire/git/chrome-extension/nd/popup.html",
+		"/D/genonfire/git/chrome-extension/nd/viewer.html",
+		"/D/genonfire/git/chrome-extension/googledic/manifest.json",
+		"/D/genonfire/git/chrome-extension/nd/manifest.json",
+		"/D/genonfire/git/chrome-extension/nd/js/content/actionWatcher.js",
+		"/D/genonfire/git/chrome-extension/googledic/background.html",
+		"/D/genonfire/git/chrome-extension/nd/js/background/background.js",
+		"/D/genonfire/git/chrome-extension/test/background.js",
+		"/D/genonfire/git/chrome-extension/naverdic/inject.js",
+		"/C/WINDOWS/TEMP/7zE47E196C0/sample.js",
+		"/D/genonfire/git/chrome-extension/test/typedUrls.js",
+		"/D/genonfire/git/chrome-extension/test/manifest.json",
+		"/D/genonfire/git/chrome-extension/googledic/_metadata/verified_contents.json",
+		"/D/genonfire/git/chrome-extension/googledic/templates/browser_action_dict.html",
+		"/D/genonfire/git/chrome-extension/googledic/browser_action.html",
+		"/D/genonfire/git/chrome-extension/nd/js/background/resultHtmlParser.js",
+		"/D/genonfire/git/chrome-extension/nd/js/background/wordParser.js",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/GZskin17 3.0 gold/panels/match/fixtures list panel.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/GZskin17 3.0 gold/panels/match/fixture details.xml",
+		"/D/genonfire/Downloads/Wannachup-Instant-Result/panels/match/match team stats popup.xml",
+		"/D/genonfire/Downloads/Wannachup-Instant-Result/panels/match/match team stats popup0.xml",
+		"/D/genonfire/Downloads/Wannachup-Instant-Result/panels/match/match team stats popup2.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Instant-Result/panels/match/match team stats full.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Instant-Result/panels/match/match team stats floating.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Instant-Result/panels/match/match team stats popup2.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Instant-Result/panels/match/match team stats popup0.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Instant-Result/panels/match/match team stats popup.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Instant-Result/panels/match/match in between highlights panel.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Instant-Result/panels/match/fixtures list panel.xml",
+		"/D/genonfire/Downloads/Wannachup-Instant-Result/panels/match/match in between highlights panel.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Wannachup-Instant-Result/panels/match/match title bar.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/fmdark/skins/fm/panels/match/match title bar.xml",
+		"/D/genonfire/Documents/Sports Interactive/Football Manager 2017/skins/Wannachup-Instant-Result/panels/match/match title bar2.xml",
+		"/D/genonfire/git/chrome-extension/nd/js/background/wordSearcher.js",
+		"/D/genonfire/git/chrome-extension/nd/js/content/shortcutWatcher.js",
+		"/D/genonfire/git/chrome-extension/nd/js/content/basicWords.js",
+		"/D/genonfire/git/chrome-extension/nd/js/popup/popup.js",
+		"/D/genonfire/git/chrome-extension/nd/vendor/jquery.js",
+		"/D/genonfire/git/chrome-extension/nd/js/common/cache.js",
+		"/C/Users/genon/AppData/Local/Google/Chrome/User Data/Default/Extensions/jfibpeiddefellcfgnijpcpddoimbdij/3.0.8_0/manifest.json",
+		"/C/Users/genon/AppData/Local/Google/Chrome/User Data/Default/Extensions/hdokiejnpimakedhajhdlcegeplioahd/4.1.43.84_0/manifest.json",
+		"/D/genonfire/Downloads/manifest.json",
+		"/D/genonfire/git/bbgo/board/forms.py",
+		"/D/genonfire/git/bbgo/board/models.py",
+		"/D/genonfire/git/bbgo/bbgo/urls.py",
+		"/D/genonfire/git/bbgo/bbgo/settings.py",
+		"/D/genonfire/git/bbgo/board/templates/showboardlist.html",
+		"/D/genonfire/git/bbgo/board/views.py",
+		"/D/genonfire/git/bbgo/board/templatetags/range.py",
+		"/D/genonfire/git/bbgo/bbgo/utils.py",
+		"/D/genonfire/git/bbgo/templatetags/templatetags.py",
+		"/D/genonfire/git/bbgo/bbgo/context_processors.py",
+		"/D/genonfire/git/bbgo/templates/base.html",
+		"/D/genonfire/git/bbgo/board/templates/editboard.html",
+		"/D/genonfire/git/bbgo/templates/login.html",
+		"/D/genonfire/git/bbgo/board/admin.py",
+		"/D/genonfire/git/django/gengo/gengo/settings.py",
+		"/D/genonfire/Documents/Sublime Text/bbgo.sublime-project",
+		"/D/genonfire/Documents/Sublime Text/gengo.sublime-project",
+		"/D/genonfire/git/django/gengo/gengo/urls.py",
+		"/D/genonfire/git/django/gengo/menu/templates/showmenu.html",
+		"/D/genonfire/git/django/gengo/vault/templates/showvault.html",
+		"/D/genonfire/git/django/gengo/gengo/apache/wsgi.py",
+		"/D/genonfire/git/django/gengo/menu/views.py",
+		"/D/genonfire/git/django/gengo/django.wsgi",
+		"/D/genonfire/git/django/gengo/gengo/wsgi.py",
+		"/D/genonfire/git/django/gengo/menu/models.py",
+		"/D/genonfire/git/django/gengo/menu/templates/editmenu.html",
+		"/D/genonfire/git/django/gengo/menu/forms.py",
+		"/D/genonfire/git/django/gengo/vault/templates/editvault.html",
+		"/D/genonfire/Downloads/애기메뉴.html",
+		"/D/genonfire/git/django/gengo/vault/views.py",
+		"/D/genonfire/git/django/gengo/vault/forms.py",
+		"/D/genonfire/git/django/gengo/runlocalserver.sh",
+		"/D/genonfire/git/django/gengo/vault/models.py",
+		"/D/genonfire/git/django/gengo/vault/migrations/__init__.py",
+		"/D/genonfire/git/django/gengo/vault/migrations/0002_auto_20161229_0818.py",
+		"/D/genonfire/git/django/gengo/vault/migrations/0001_initial.py",
+		"/D/genonfire/git/django/gengo/menu/tests.py",
+		"/D/genonfire/git/django/gengo/menu/admin.py",
+		"/D/genonfire/git/django/gengo/menu/__init__.py",
+		"/D/genonfire/git/django/gengo/menu/migrations/__init__.py",
+		"/D/genonfire/git/django/gengo/menu/migrations/0001_initial.py",
+		"/D/genonfire/git/django/gengo/gengo/__init__.py",
+		"/D/genonfire/git/django/gengo/vault/admin.py",
+		"/D/genonfire/git/django/gengo/vault/__init__.py",
+		"/D/genonfire/git/django/gengo/vault/tests.py",
+		"/D/genonfire/git/django/gengo/manage.py",
+		"/D/genonfire/git/django/gengo/runsslserver.sh",
+		"/D/genonfire/git/django/testProject/testProject/settings.py",
+		"/D/genonfire/git/django/testProject/testProject/urls.py",
+		"/D/genonfire/git/django/testProject/manage.py",
+		"/D/genonfire/git/django/vaultkeeper/vaultkeeper/urls.py",
+		"/D/genonfire/git/django/vaultkeeper/vault/templates/newvault.html",
+		"/D/genonfire/git/django/vaultkeeper/vaultkeeper/wsgi.py",
+		"/D/genonfire/git/django/vaultkeeper/templates/layout.html",
+		"/D/genonfire/git/django/vaultkeeper/vault/models.py",
+		"/D/genonfire/git/django/vaultkeeper/vaultkeeper/settings.py"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"D:\\genonfire\\git\\chrome-extension\\naverdic",
+			"D:\\genonfire\\git\\chrome-extension\\googledic,D:\\genonfire\\git\\chrome-extension\\nd",
+			"D:\\genonfire\\git\\chrome-extension\\googledic",
+			"D:\\genonfire\\git\\chrome-extension\\nd",
+			"<open folders>,D:\\genonfire\\git\\chrome-extension\\nd",
+			"D:\\genonfire\\git\\bbgo\\bbgo",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"popupFrame",
+			"shadow",
+			"popupFrame",
+			"onKeyPress",
+			"callback",
+			"stauts",
+			"ajax",
+			"remove",
+			"openPopup",
+			"bind",
+			"openPopup",
+			"translateWord",
+			"console",
+			"translateWord",
+			"status",
+			"translate",
+			"openPopup",
+			"storage",
+			"openPopup",
+			"translateWord",
+			"console",
+			"translate",
+			"translateWord",
+			"option_save",
+			"console",
+			"translateWord",
+			"selection",
+			"offset",
+			"handleTrigger",
+			"doubleClick",
+			"trigger",
+			"singleClick",
+			"clickListener",
+			"doubleClick",
+			"timeout",
+			"singleClick",
+			"setTimeout",
+			"singleClick",
+			"translateWord",
+			"offset",
+			"option_popup",
+			"options_popup",
+			"save",
+			"btn",
+			"save-status",
+			"span",
+			"remove",
+			"translateWord",
+			"chrome.runtime",
+			"low",
+			"translateWord",
+			"preventDefault",
+			"addEventListener",
+			"createListenerToExtension",
+			"whenOutsideClicked",
+			"hide",
+			"png",
+			"X",
+			"clientX",
+			"initialize",
+			"viewermanager.js",
+			"showNewView",
+			"appendTo",
+			"viewer.html",
+			"word in result",
+			"ng-scope",
+			"document",
+			"chrome.extension",
+			"getBackgroundPage",
+			"dothing()",
+			"override",
+			"browserAction",
+			"getselection",
+			"listener",
+			"script",
+			"listener",
+			"addEventListener",
+			"addListener",
+			"경고",
+			"coach",
+			"cncp",
+			"height",
+			"<container/>",
+			"weather",
+			"noAudios",
+			"playAudio",
+			"noAudios",
+			"playAudio",
+			"audiostring",
+			"'",
+			"playAudio",
+			"API_URL",
+			"search2",
+			"ng-submit",
+			"naver",
+			"search",
+			"status",
+			"getCurrentTabUrl",
+			"index_total",
+			"board show page",
+			"template.Library",
+			"global_settings",
+			"get_absolute_url",
+			"HTTPResponse",
+			"TIME_ZONE",
+			"now",
+			"get_absolute_url",
+			"show",
+			"AUTH_USER_MODEL",
+			"utils.py",
+			"login",
+			"http",
+			"<img src=\"{{menu.Picture.url}}\">",
+			"MEDIA_URL",
+			"yellow",
+			"MEDIA_URL",
+			"logout",
+			"login",
+			"LOGIN_REDIRECT_URL",
+			"')\n",
+			"input_required",
+			"checkType",
+			"checkSerial",
+			"headImage",
+			"topMargin",
+			"headMenu",
+			"{% endfor %}",
+			"showtype"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"<img src=\"{{menu.Picture.url}}\" width=\"144px\" height=\"88px\">"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/D/genonfire/git/chrome-extension/naverdic/popup.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								777,
+								777
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 167.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/genonfire/git/chrome-extension/naverdic/popup.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2737,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2737,
+								2737
+							]
+						],
+						"settings":
+						{
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 423.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.566517577988,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "naverdic.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"mani",
+				"manifest.json"
+			],
+			[
+				"back",
+				"background.js"
+			],
+			[
+				"popup.js",
+				"popup.js"
+			],
+			[
+				"options.html",
+				"options.html"
+			],
+			[
+				"options.js",
+				"options.js"
+			],
+			[
+				"con",
+				"content.js"
+			],
+			[
+				"popup.html",
+				"popup.html"
+			],
+			[
+				"options",
+				"options.html"
+			],
+			[
+				"inde",
+				"docs\\index.php"
+			],
+			[
+				"contents",
+				"content.js"
+			],
+			[
+				"conte",
+				"content.js"
+			],
+			[
+				"pop",
+				"popup.html"
+			],
+			[
+				"options.h",
+				"options.html"
+			],
+			[
+				"conten",
+				"content.js"
+			],
+			[
+				"readme",
+				"README.md"
+			],
+			[
+				"0.2",
+				"0.2"
+			],
+			[
+				"frame.css",
+				"frame.css"
+			],
+			[
+				"frame",
+				"frame.html"
+			],
+			[
+				"content",
+				"content.js"
+			],
+			[
+				"inj",
+				"inject.js"
+			],
+			[
+				"read",
+				"README.md"
+			],
+			[
+				"utils",
+				"bbgo\\utils.py"
+			],
+			[
+				"base.html",
+				"templates\\base.html"
+			],
+			[
+				"forms",
+				"board\\forms.py"
+			],
+			[
+				"urls",
+				"bbgo\\urls.py"
+			],
+			[
+				"show",
+				"board\\templates\\showboardlist.html"
+			],
+			[
+				"edit",
+				"board\\templates\\editboard.html"
+			],
+			[
+				"admin",
+				"board\\admin.py"
+			],
+			[
+				"views",
+				"board\\views.py"
+			],
+			[
+				"settings",
+				"bbgo\\settings.py"
+			],
+			[
+				"models",
+				"board\\models.py"
+			],
+			[
+				"settg",
+				"gengo\\settings.py"
+			],
+			[
+				"showme",
+				"menu\\templates\\showmenu.html"
+			],
+			[
+				"wsgi.p",
+				"gengo\\apache\\wsgi.py"
+			],
+			[
+				"showv",
+				"vault\\templates\\showvault.html"
+			],
+			[
+				"wsgi.",
+				"gengo\\apache\\wsgi.py"
+			],
+			[
+				"wsgi",
+				"django.wsgi"
+			],
+			[
+				"modes",
+				"menu\\models.py"
+			],
+			[
+				"views.",
+				"menu\\views.py"
+			],
+			[
+				"urls.",
+				"gengo\\urls.py"
+			],
+			[
+				"html",
+				"templates\\base.html"
+			],
+			[
+				"editva",
+				"vault\\templates\\editvault.html"
+			],
+			[
+				"editme",
+				"menu\\templates\\editmenu.html"
+			],
+			[
+				"login",
+				"templates\\login.html"
+			],
+			[
+				"showva",
+				"vault\\templates\\showvault.html"
+			],
+			[
+				"base",
+				"templates\\base.html"
+			],
+			[
+				"forms.py",
+				"menu\\forms.py"
+			],
+			[
+				"base.",
+				"templates\\base.html"
+			],
+			[
+				"settings.",
+				"gengo\\settings.py"
+			],
+			[
+				"models.",
+				"menu\\models.py"
+			],
+			[
+				"url",
+				"gengo\\urls.py"
+			],
+			[
+				"forms.",
+				"vault\\forms.py"
+			],
+			[
+				"menuvi",
+				"menu\\views.py"
+			],
+			[
+				"runlo",
+				"runlocalserver.sh"
+			],
+			[
+				"menumodels",
+				"menu\\models.py"
+			],
+			[
+				"mana",
+				"manage.py"
+			],
+			[
+				"menuvie",
+				"menu\\views.py"
+			],
+			[
+				"url.",
+				"gengo\\urls.py"
+			],
+			[
+				"admin.",
+				"key\\admin.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "gengo",
+		"selected_items":
+		[
+			[
+				"gengo",
+				"D:\\genonfire\\Documents\\Sublime Text\\gengo.sublime-project"
+			],
+			[
+				"",
+				"D:\\genonfire\\Documents\\Sublime Text\\bbgo.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 191.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,18 @@
+{
+    "folders":
+    [
+        {
+            "file_exclude_patterns":
+            [
+                    "*.gitignore",
+                    "*.sqlite3",
+                    "*.pyc"
+            ],
+            "folder_exclude_patterns":
+            [
+                    "upload"
+            ],
+            "path": "D:\\genonfire\\git\\chrome-extension\\naverdic"
+        }
+    ]
+}
