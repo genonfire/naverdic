@@ -14,11 +14,12 @@ function searchWord(e) {
           $('#content').html(manipulated);
           for (var i = 0; i < noAudios; i++) {
             play = document.getElementById("playaudio" + i);
-            if (play)
+            if (play) {
               play.id = i;
               play.addEventListener("click", function(e){
                 document.getElementById('proaudio' + this.id).play();
               }, false);
+            }
           }
       }
   });

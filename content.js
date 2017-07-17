@@ -1,3 +1,5 @@
+var noAudios;
+
 function searchWord(word, x, y) {
   noAudios = 0;
   var queryURL = "http://endic.naver.com/searchAssistDict.nhn?query=" + word;
@@ -10,6 +12,15 @@ function searchWord(word, x, y) {
       if (data.indexOf('<h3') != -1)  {
         manipulated = makeFrameData(data);
         showFrame(manipulated, x, y);
+        for (var i = 0; i < noAudios; i++) {
+          play = document.getElementById("playaudio" + i);
+          if (play) {
+            play.id = i;
+            play.addEventListener("click", function(e){
+              document.getElementById('proaudio' + this.id).play();
+            }, false);
+          }
+        }
       }
   })
 }
@@ -56,6 +67,24 @@ function makeFrameData(datain) {
   data = data.replace(/http:\/\/dicimg.naver.net\/endic\/img\/btn_syn.gif/gi, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAQCAIAAADxiUp0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAAAiklEQVQ4T82PQQqAMBAD/bYP8R++xXNP/kJ6sVIIYTdbFLEV5rAmwaHTlvZuXLIj5w6Mls3L6vEtJ3w3Wi3jT0b+xR9R+AOZBxXPoiMKhQzwDpSwwok56g0QWhmPDNgYUPFGhq2X3eStrCyYKAdoeelDIeM6ShjjqHCC+9nLJO0Bt1r2ESNknUj7CV29/v0DruQhAAAAAElFTkSuQmCC');
 
   while(true) {
+    var audiostring = '';
+    var audiohead = data.indexOf('playlist="');
+    if (audiohead != -1) {
+      var audiotail = data.indexOf(' class=', audiohead + 10)
+      var audiosource = data.substring(audiohead + 10, audiotail);
+
+      var playhead = data.indexOf('<img class="play"');
+      if (playhead != -1) {
+        var playsource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAkUlEQVR4AWOgObjJUMDAhlu6AUxuZPjHcI5BGpeS/1CWI8MbhhsMfNiV/IfzzBl+MUzGogSuaAkDM5CcwvCDQRAm/R8ZQkWygaQpkA7Bp2gXkOQA0hUUK0oHkmZAOhi3w+czMAHJ6QzfGQTwB4Elw2+GCfgD04XhHcNVBh580bIFqPgUgwT+CL7OkMPASv10AwC3FEwe7LROMwAAAABJRU5ErkJggg==";
+        audiostring = '<audio src="' + audiosource + '" id="proaudio' + noAudios + '"></audio> <input type="image" id="playaudio' + noAudios + '" src="' + playsource + '">';
+      }
+      else {
+        audiostring = '<audio src="' + audiosource + '" id="proaudio' + noAudios + '"></audio> <input type="button" id="playaudio' + noAudios + '" value="play">';
+      }
+    } else {
+      break;
+    }
+
     var trashhead = data.indexOf('<a id="pron_en"');
     if (trashhead == -1) {
       break;
@@ -64,7 +93,8 @@ function makeFrameData(datain) {
 
     var datapart1 = data.substring(0, trashhead);
     var datapart2 = data.substring(trashtail + 4);
-    data = datapart1 + datapart2;
+    data = datapart1 + audiostring + datapart2;
+    noAudios++;
   }
 
   while(true) {
