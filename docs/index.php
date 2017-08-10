@@ -3,7 +3,7 @@
   $client_secret = $_POST['client_secret'];
   $encText = $_POST['text'];
   $postvars = "source=en&target=ko&text=".$encText;
-  $url = "https://openapi.naver.com/v1/language/translate";
+  $url = "https://openapi.naver.com/v1/papago/n2mt";
   $is_post = true;
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
