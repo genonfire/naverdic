@@ -28,7 +28,7 @@ function searchWord(word, x, y) {
 function translateWord(phrase, x, y, naver_client_id, naver_client_secret) {
   var client_id = naver_client_id;
   var client_secret = naver_client_secret;
-  var queryURL = 'http://gencode.me/api/navertrans/';
+  var queryURL = 'http://gencode.me/api/papago/';
   var formData = "source=en&target=ko&client_id=" + client_id + "&client_secret=" + client_secret + "&text=" + phrase;
 
   chrome.runtime.sendMessage({
@@ -37,9 +37,9 @@ function translateWord(phrase, x, y, naver_client_id, naver_client_secret) {
     data: formData,
     url: queryURL,
     }, function(dataout) {
-      var texthead = dataout.indexOf('{"translatedText":"');
-      var texttail = dataout.indexOf('"}', texthead + 19);
-      var data = dataout.substring(texthead + 19, texttail);
+      var texthead = dataout.indexOf('"translatedText":"');
+      var texttail = dataout.indexOf('"}}}', texthead + 18);
+      var data = dataout.substring(texthead + 18, texttail);
       showFrame(data, x, y);
   })
 }
