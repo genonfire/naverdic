@@ -33,7 +33,7 @@ function onKeyPress(e) {
 }
 
 function parseAndManipulate(datain) {
-  var data = datain.replace(/<a href="/gi, '<a href="http://endic.naver.com');
+  var data = datain.replace(/<a href="/gi, '<a target="blank" href="http://endic.naver.com');
   while(true) {
     var audiostring = '';
     var audiohead = data.indexOf('playlist="');
