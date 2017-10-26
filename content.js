@@ -1,6 +1,9 @@
+var marginX = 10;
+var marginY = 20;
+var popupWidth = 360;
 var noAudios;
 
-function searchWord(word, x, y) {
+function searchWord(e, word, x, y) {
   noAudios = 0;
   var queryURL = "http://endic.naver.com/searchAssistDict.nhn?query=" + word;
   
@@ -11,7 +14,7 @@ function searchWord(word, x, y) {
     }, function(data) {
       if (data.indexOf('<h3') != -1)  {
         manipulated = makeFrameData(data);
-        showFrame(manipulated, x, y);
+        showFrame(e, manipulated, x, y);
         for (var i = 0; i < noAudios; i++) {
           play = document.getElementById("playaudio" + i);
           if (play) {
@@ -25,7 +28,7 @@ function searchWord(word, x, y) {
   })
 }
 
-function translateWord(phrase, x, y, naver_client_id, naver_client_secret) {
+function translateWord(e, phrase, top, left, naver_client_id, naver_client_secret) {
   var client_id = naver_client_id;
   var client_secret = naver_client_secret;
   var queryURL = 'http://gencode.me/api/papago/';
@@ -40,17 +43,25 @@ function translateWord(phrase, x, y, naver_client_id, naver_client_secret) {
       var texthead = dataout.indexOf('"translatedText":"');
       var texttail = dataout.indexOf('"}}}', texthead + 18);
       var data = dataout.substring(texthead + 18, texttail);
-      showFrame(data, x, y);
+      showFrame(e, data, top, left);
   })
 }
 
-function showFrame(datain, top, left) {
+function showFrame(e, datain, top, left) {
   $('<div/>', {
     id: 'popupFrame',
     class: 'popupFrame',
     html: datain,
-    style: "position:absolute;top:" + top + "px;left:" + left + "px;width:360px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;font-size: 9pt;color:black;box-shadow:0 0 3px 3px #888;"
+    style: "position:absolute;top:" + top + "px;left:" + left + "px;width:" + popupWidth +"px;height:auto;display:block;z-index:99997;background-color:#FFFFDD;font-size: 9pt;color:black;box-shadow:0 0 3px 3px #888;"
   }).appendTo('body');
+
+  var height = $('#popupFrame').height();
+  var winheight = $(window).height();
+
+  if (height + e.clientY > winheight) {
+    newtop = top - height - 2 * marginY;
+    $('#popupFrame').css('top', newtop);
+  }
 
   $('#popupFrame').on('mousedown', function(e) {
     e.stopPropagation();
@@ -157,12 +168,16 @@ var checkTrigger = function(e, key) {
 }
 
 function openPopup(e, naver_client_id, naver_client_secret, type = 'search') {
-  var marginX = 10;
-  var marginY = 20;
   var top = e.clientY + $(document).scrollTop() + marginY;
   var left = e.clientX - 180 + $(document).scrollLeft();
+  var clientY = e.clientY;
   if (e.clientX - 180 < marginX)
     left = marginX + $(document).scrollLeft();
+
+  var winWidth = $(window).width();
+  if (left + popupWidth > winWidth) {
+    left = winWidth - popupWidth - marginX;
+  }
 
   var selection = window.getSelection();
   if (selection.rangeCount > 0) {
@@ -170,10 +185,10 @@ function openPopup(e, naver_client_id, naver_client_secret, type = 'search') {
       var text = range.cloneContents().textContent.trim();
       var english = /^[A-Za-z]*$/;
       if (english.test(text[0]) && text.split(/\s+/).length < 4) {
-        searchWord(text.toLowerCase(), top, left);
+        searchWord(e, text.toLowerCase(), top, left);
       }
       else if (type == 'translate') {
-        translateWord(text, top, left, naver_client_id, naver_client_secret);
+        translateWord(e, text, top, left, naver_client_id, naver_client_secret);
       }
   }
 }
