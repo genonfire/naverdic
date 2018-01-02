@@ -31,7 +31,7 @@ function searchWord(e, word, x, y) {
 function translateWord(e, phrase, top, left, naver_client_id, naver_client_secret) {
   var client_id = naver_client_id;
   var client_secret = naver_client_secret;
-  var queryURL = 'http://gencode.me/api/papago/';
+  var queryURL = 'http://www.gencode.me/api/papago/';
   var formData = "source=en&target=ko&client_id=" + client_id + "&client_secret=" + client_secret + "&text=" + phrase;
 
   chrome.runtime.sendMessage({
@@ -85,13 +85,8 @@ function makeFrameData(datain) {
       var audiosource = data.substring(audiohead + 10, audiotail);
 
       var playhead = data.indexOf('<img class="play"');
-      if (playhead != -1) {
-        var playsource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAkUlEQVR4AWOgObjJUMDAhlu6AUxuZPjHcI5BGpeS/1CWI8MbhhsMfNiV/IfzzBl+MUzGogSuaAkDM5CcwvCDQRAm/R8ZQkWygaQpkA7Bp2gXkOQA0hUUK0oHkmZAOhi3w+czMAHJ6QzfGQTwB4Elw2+GCfgD04XhHcNVBh580bIFqPgUgwT+CL7OkMPASv10AwC3FEwe7LROMwAAAABJRU5ErkJggg==";
-        audiostring = '<audio src="' + audiosource + '" id="proaudio' + noAudios + '"></audio> <input type="image" id="playaudio' + noAudios + '" src="' + playsource + '">';
-      }
-      else {
-        audiostring = '<audio src="' + audiosource + '" id="proaudio' + noAudios + '"></audio> <input type="button" id="playaudio' + noAudios + '" value="play">';
-      }
+      var playsource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAkUlEQVR4AWOgObjJUMDAhlu6AUxuZPjHcI5BGpeS/1CWI8MbhhsMfNiV/IfzzBl+MUzGogSuaAkDM5CcwvCDQRAm/R8ZQkWygaQpkA7Bp2gXkOQA0hUUK0oHkmZAOhi3w+czMAHJ6QzfGQTwB4Elw2+GCfgD04XhHcNVBh580bIFqPgUgwT+CL7OkMPASv10AwC3FEwe7LROMwAAAABJRU5ErkJggg==";
+      audiostring = '<audio src="' + audiosource + '" id="proaudio' + noAudios + '"></audio> <input type="image" id="playaudio' + noAudios + '" src="' + playsource + '" style="cursor:pointer;">';
     } else {
       break;
     }

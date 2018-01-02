@@ -42,13 +42,8 @@ function parseAndManipulate(datain) {
       var audiosource = data.substring(audiohead + 10, audiotail);
 
       var playhead = data.indexOf('<img class="play"');
-      if (playhead != -1) {
-        var playsource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAkUlEQVR4AWOgObjJUMDAhlu6AUxuZPjHcI5BGpeS/1CWI8MbhhsMfNiV/IfzzBl+MUzGogSuaAkDM5CcwvCDQRAm/R8ZQkWygaQpkA7Bp2gXkOQA0hUUK0oHkmZAOhi3w+czMAHJ6QzfGQTwB4Elw2+GCfgD04XhHcNVBh580bIFqPgUgwT+CL7OkMPASv10AwC3FEwe7LROMwAAAABJRU5ErkJggg==";
-        audiostring = '<audio src="' + audiosource + '" id="proaudio' + noAudios + '"></audio> <input type="image" id="playaudio' + noAudios + '" src="' + playsource + '">';
-      }
-      else {
-        audiostring = '<audio src="' + audiosource + '" id="proaudio' + noAudios + '"></audio> <input type="button" id="playaudio' + noAudios + '" value="play">';
-      }
+      var playsource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAkUlEQVR4AWOgObjJUMDAhlu6AUxuZPjHcI5BGpeS/1CWI8MbhhsMfNiV/IfzzBl+MUzGogSuaAkDM5CcwvCDQRAm/R8ZQkWygaQpkA7Bp2gXkOQA0hUUK0oHkmZAOhi3w+czMAHJ6QzfGQTwB4Elw2+GCfgD04XhHcNVBh580bIFqPgUgwT+CL7OkMPASv10AwC3FEwe7LROMwAAAABJRU5ErkJggg==";
+      audiostring = '<audio src="' + audiosource + '" id="proaudio' + noAudios + '"></audio> <input type="image" id="playaudio' + noAudios + '" src="' + playsource + '" style="cursor:pointer;">';
     } else {
       return data;
     }
