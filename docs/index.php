@@ -16,10 +16,13 @@
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   $response = curl_exec ($ch);
   $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  echo "status_code:".$status_code."<br>";
   curl_close ($ch);
+
+  $json_response = json_decode($response, true);
+  $translatedText = $json_response['message']['result']['translatedText'];
+
   if($status_code == 200) {
-    echo $response;
+    echo $translatedText;
   } else {
     echo "Error:".$response;
   }

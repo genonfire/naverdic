@@ -6,7 +6,7 @@ var noAudios;
 function searchWord(e, word, x, y) {
   noAudios = 0;
   var queryURL = "http://endic.naver.com/searchAssistDict.nhn?query=" + word;
-  
+
   chrome.runtime.sendMessage({
     method: 'POST',
     action: 'xhttp',
@@ -39,10 +39,7 @@ function translateWord(e, phrase, top, left, naver_client_id, naver_client_secre
     action: 'navertrans',
     data: formData,
     url: queryURL,
-    }, function(dataout) {
-      var texthead = dataout.indexOf('"translatedText":"');
-      var texttail = dataout.indexOf('"}}}', texthead + 18);
-      var data = dataout.substring(texthead + 18, texttail);
+    }, function(data) {
       showFrame(e, data, top, left);
   })
 }
@@ -139,22 +136,28 @@ function makeFrameData(datain) {
 }
 
 var checkTrigger = function(e, key) {
+  if (window.navigator.platform.substring('Mac')) {
+    ctrlKey = e.metaKey;
+  }
+  else {
+    ctrlKey = e.ctrlKey;
+  }
   switch(key) {
     case 'ctrl':
-      if (!e.ctrlKey || e.altKey)
+      if (!ctrlKey || e.altKey)
         return false;
       break;
     case 'alt':
-      if (e.ctrlKey || !e.altKey)
+      if (ctrlKey || !e.altKey)
         return false;
       break;
     case 'ctrlalt':
-      if (!e.ctrlKey || !e.altKey)
+      if (!ctrlKey || !e.altKey)
         return false;
       break;
     case 'none':
     default:
-      if (e.ctrlKey || e.altKey)
+      if (ctrlKey || e.altKey)
         return false;
       break;
   }
