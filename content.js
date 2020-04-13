@@ -136,7 +136,7 @@ function makeFrameData(datain) {
 }
 
 var checkTrigger = function(e, key) {
-  if (window.navigator.platform.substring('Mac')) {
+  if (window.navigator.platform.includes('Mac')) {
     ctrlKey = e.metaKey;
   }
   else {
@@ -202,7 +202,7 @@ function registerEventListener() {
     naver_client_id: '',
     naver_client_secret: ''
   }, function(items) {
-    if (!items.dclick && !items.drag) {
+    if (!items.dclick && !items.drag && !items.translate) {
       return;
     }
     var mousedown = false;
