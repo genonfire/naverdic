@@ -1,12 +1,15 @@
 {
-  "background": {
-    "scripts": ["background.js", "jquery-3.1.1.min.js"],
-    "persistent": false
-  },
+  "name": "네이버 영어사전 (Naver Dictionary)",
+  "description": "직접 단어를 입력하거나 웹페이지의 영어 단어를 선택해 영단어의 뜻을 보여줍니다.",
+  "version": "4.0",
+  "manifest_version": 2,
+  "permissions": [
+    "storage"
+  ],
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html",
-    "default_title": "Naver Dic"
+    "default_title": "네이버 영어사전"
   },
   "icons": {
     "128": "icon.png",
@@ -14,12 +17,14 @@
     "32": "icon.png",
     "48": "icon.png"
   },
-  "permissions": [
-    "storage"
-  ],
+  "background": {
+    "scripts": ["background.js", "jquery-3.1.1.min.js"],
+    "persistent": false
+  },
   "content_scripts": [{
     "matches": [ "<all_urls>" ],
-    "js": ["content.js", "jquery-3.1.1.min.js"],
+    "js": ["content.js"],
+    "css": ["content.css"],
     "run_at": "document_idle",
     "all_frames": true
   }],
@@ -27,9 +32,5 @@
   "options_ui": {
     "page": "options.html",
     "chrome_style": false
-  },
-  "manifest_version": 2,
-  "name": "네이버 사전 (Naver Dictionary)",
-  "description": "직접 단어를 입력하거나 웹페이지의 영어 단어를 선택해 영단어의 뜻을 보여줍니다.",
-  "version": "3.2"
+  }
 }

@@ -1,0 +1,32 @@
+.naverdic-wordTitle {
+  font-size: 16px;
+}
+
+audio.naverdic-audio {
+  width: 100px;
+  height: 20px;
+}
+
+audio.naverdic-audio::-webkit-media-controls-panel {
+  background-color: #FFFFDD;
+}
+
+audio.naverdic-audio::-webkit-media-controls-timeline-container {
+  display:none !important;
+}
+
+audio.naverdic-audio::-webkit-media-controls-current-time-display {
+  display:none !important;
+}
+
+audio.naverdic-audio::-webkit-media-controls-time-remaining-display {
+  display:none !important;
+}
+
+audio.naverdic-audio::-webkit-media-controls-timeline {
+  display:none !important;
+}
+
+audio.naverdic-audio::-webkit-media-controls-volume-control-container {
+  display:none !important;
+}
