@@ -2,9 +2,14 @@ var marginX = 10;
 var marginY = 20;
 var popupWidth = 360;
 var noAudios = 0;
+var popupColor = '#FFFFDD';
+var popupFontsize = '11';
 
 function searchWord(e, word, x, y) {
-  var queryURL = "https://en.dict.naver.com/api3/enko/search?query=" + word;
+  const dicURL = "https://en.dict.naver.com/api3/enko/search?m=mobile&query=";
+  const naverURL = "https://dict.naver.com/search.dict?dicQuery="
+  const queryURL = dicURL + word;
+  const linkURL = naverURL + word;
 
   chrome.runtime.sendMessage({
     method: 'GET',
@@ -17,7 +22,7 @@ function searchWord(e, word, x, y) {
     var items = data.searchResultMap.searchResultListMap.WORD.items;
 
     if (items.length > 0) {
-      var html = ''
+      var html = '';
       var audio = null;
 
       for (var i = 0; i < items.length; i++) {
@@ -28,7 +33,12 @@ function searchWord(e, word, x, y) {
           audio = items[i].searchPhoneticSymbolList[0].symbolFile;
         }
 
-        html += '<div class="naverdic-wordTitle">' + word;
+        html += '<div class="naverdic-wordTitle"><a href="' + linkURL + ' " target="_blank">' + word + '</a>';
+
+        if (partOfSpeech) {
+          html += ' [' + partOfSpeech + ']'
+        }
+
         if (audio && noAudios == 0) {
           var audioID = 'proaudio' + ++noAudios;
           var playAudio = '<span><audio class=naverdic-audio controls src="' + audio + '" id="' + audioID + '" controlslist="nodownload nooption"></audio></span>';
@@ -75,7 +85,7 @@ function showFrame(e, datain, top, left) {
   div.innerHTML = datain;
   div.setAttribute('id', 'popupFrame');
   div.className = 'popupFrame';
-  div.style.cssText = "position:absolute;top:" + top + "px;left:" + left + "px;width:" + popupWidth +"px;height:auto;line-height:normal;display:block;z-index:99997;background-color:#FFFFDD;padding:5px;font-size: 9pt;color:black;box-shadow:0 0 3px 3px #888;";
+  div.style.cssText = "position:absolute;top:" + top + "px;left:" + left + "px;width:" + popupWidth +"px;height:auto;line-height:normal;display:block;z-index:99997;background-color:" + popupColor + ";padding:5px;font-size: " + popupFontsize + "pt;color:black;box-shadow:0 0 3px 3px #888;";
 
   document.body.appendChild(div)
 
@@ -163,7 +173,9 @@ function registerEventListener() {
     translate: false,
     translate_trigger_key: 'ctrlalt',
     naver_client_id: '',
-    naver_client_secret: ''
+    naver_client_secret: '',
+    popup_bgcolor: '#FFFFDD',
+    popup_fontsize: '11'
   }, function(items) {
     if (!items.dclick && !items.drag && !items.translate) {
       return;
@@ -174,6 +186,13 @@ function registerEventListener() {
     var clicks = 0;
     var timeout;
     var prevX;
+
+    if (items.popup_bgcolor) {
+      popupColor = items.popup_bgcolor;
+    }
+    if (items.popup_fontsize) {
+      popupFontsize = items.popup_fontsize;
+    }
 
     document.body.onmousedown = function(e) {
       mousedown = true;

@@ -2,7 +2,10 @@ var noAudios = 0;
 
 function searchWord(e) {
   const dicURL = "https://en.dict.naver.com/api3/enko/search?m=mobile&query=";
-  const queryURL = dicURL + document.getElementById("dic").value.toLowerCase();
+  const naverURL = "https://dict.naver.com/search.dict?dicQuery="
+  const query = document.getElementById("dic").value;
+  const queryURL = dicURL + query;
+  const linkURL = naverURL + query;
 
   chrome.runtime.sendMessage({
     method: 'GET',
@@ -26,7 +29,10 @@ function searchWord(e) {
           audio = items[i].searchPhoneticSymbolList[0].symbolFile;
         }
 
-        html += '<div class="naverdic-wordTitle">' + word;
+        html += '<div class="wordTitle"><a href="' + linkURL + ' " target="_blank">' + word + '</a>';
+        if (partOfSpeech) {
+          html += ' [' + partOfSpeech + ']'
+        }
         if (audio && noAudios == 0) {
           var audioID = 'proaudio' + ++noAudios;
           var playAudio = '<span><audio class=naverdic-audio controls src="' + audio + '" id="' + audioID + '" controlslist="nodownload nooption"></audio></span>';

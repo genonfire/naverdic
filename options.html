@@ -64,8 +64,20 @@
       </td>
     </tr>
     <tr>
-      <td align="center" width="180px"><b>팝업 뜨는 방식</b></td>
+      <td align="center" width="180px"><b>설정</b></td>
       <td align="left">
+        <table>
+          <tr>
+            <td width="88px">
+              <label>팝업 배경색: </label><br>
+              &nbsp;<label>글자 크기(pt): </label>
+            </td>
+            <td>
+              <input type="text" id="popup_bgcolor" style="margin-bottom:2px;"><br>
+              <input type="text" id="popup_fontsize">
+            </td>
+          </tr>
+        </table>
         <label>
           <input type="checkbox" id="check_dclick">단어를 더블 클릭했을 때 팝업을 보여줍니다.
         </label>
@@ -94,10 +106,10 @@
       </td>
     </tr>
     <tr>
-      <td align="center" width="200px"><b><font color="#417690">실험적인 기능</font></b></td>
+      <td align="center" width="200px"><b><font color="#417690">파파고 문장 번역</font></b></td>
       <td align="left">
         <label>
-          <input type="checkbox" id="check_translate">문장 번역 기능 사용 by 파파고
+          <input type="checkbox" id="check_translate">문장 번역 기능 사용
         </label>
         <br>
         <span class="text_desc">
@@ -115,13 +127,13 @@
               <label>Client Secret: </label>
             </td>
             <td>
-              <input type="text" id="naver_client_id"><br>
+              <input type="text" id="naver_client_id" style="margin-bottom:2px;"><br>
               <input type="text" id="naver_client_secret">
             </td>
           </tr>
           <tr>
             <td colspan="2" align="right">
-            <font color="#E54F44">문장 통번역 기능을 이용하려면 파파고 사용법 보기를 참고하세요.</font><br>
+            <font color="#E54F44">문장 번역 기능을 이용하려면 파파고 사용법 보기를 참고하세요.</font><br>
             <a href="https://gencode.me/blogs/post/48/" target="_blank">파파고 사용법 보기</a><br>
             <a href="https://developers.naver.com/apps/#/myapps" target="_blank">NAVER Developers 가기</a>
             </td>

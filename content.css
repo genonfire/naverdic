@@ -1,15 +1,13 @@
-.naverdic-wordTitle {
-  font-size: 16px;
-}
-
 audio.naverdic-audio {
   width: 100px;
   height: 20px;
+  margin-left: 5px;
+  opacity: 0.8;
 }
 
-audio.naverdic-audio::-webkit-media-controls-panel {
+/*audio.naverdic-audio::-webkit-media-controls-panel {
   background-color: #FFFFDD;
-}
+}*/
 
 audio.naverdic-audio::-webkit-media-controls-timeline-container {
   display:none !important;
@@ -29,4 +27,9 @@ audio.naverdic-audio::-webkit-media-controls-timeline {
 
 audio.naverdic-audio::-webkit-media-controls-volume-control-container {
   display:none !important;
+}
+
+div.naverdic-wordTitle a {
+  text-decoration:none;
+  color: black;
 }
