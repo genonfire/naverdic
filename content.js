@@ -28,6 +28,7 @@ function searchWord(e, word, x, y) {
       for (var i = 0; i < items.length; i++) {
         var word = items[i].expEntry;
         var means = items[i].meansCollector[0].means;
+        var phonetic = items[i].searchPhoneticSymbolList[0]
         var partOfSpeech = items[i].meansCollector[0].partOfSpeech;
         if (audio == null && items[i].searchPhoneticSymbolList.length > 0) {
           audio = items[i].searchPhoneticSymbolList[0].symbolFile;
@@ -40,6 +41,10 @@ function searchWord(e, word, x, y) {
         }
 
         if (audio && noAudios == 0) {
+          if (phonetic && phonetic.symbolValue) {
+            html += '<span>[' + phonetic.symbolValue + ']</span>'
+          }
+
           var audioID = 'proaudio' + ++noAudios;
           var playAudio = '<span><audio class=naverdic-audio controls src="' + audio + '" id="' + audioID + '" controlslist="nodownload nooption"></audio></span>';
           html += playAudio;
