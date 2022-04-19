@@ -2,7 +2,7 @@ var noAudios = 0;
 
 function searchWord(e) {
   const dicURL = "https://en.dict.naver.com/api3/enko/search?m=mobile&query=";
-  const naverURL = "https://dict.naver.com/search.dict?dicQuery="
+  const naverURL = "https://dict.naver.com/search.dict?dicQuery=";
   const query = document.getElementById("dic").value;
   const queryURL = dicURL + query;
   const linkURL = naverURL + query;
@@ -12,19 +12,20 @@ function searchWord(e) {
     action: 'endic',
     url: queryURL,
     }, function(data) {
-      if (!data || !data.searchResultMap)
-        return
+      if (!data || !data.searchResultMap) {
+        return;
+      }
 
     var items = data.searchResultMap.searchResultListMap.WORD.items;
 
     if (items.length > 0) {
-      var html = ''
+      var html = '';
       var audio = null;
 
       for (var i = 0; i < items.length; i++) {
         var word = items[i].expEntry;
         var means = items[i].meansCollector[0].means;
-        var phonetic = items[i].searchPhoneticSymbolList[0]
+        var phonetic = items[i].searchPhoneticSymbolList[0];
         var partOfSpeech = items[i].meansCollector[0].partOfSpeech;
         if (audio == null && items[i].searchPhoneticSymbolList.length > 0) {
           audio = items[i].searchPhoneticSymbolList[0].symbolFile;
@@ -32,11 +33,11 @@ function searchWord(e) {
 
         html += '<div class="wordTitle"><a href="' + linkURL + ' " target="_blank">' + word + '</a>';
         if (partOfSpeech) {
-          html += ' [' + partOfSpeech + ']'
+          html += ' [' + partOfSpeech + ']';
         }
         if (audio && noAudios == 0) {
           if (phonetic && phonetic.symbolValue) {
-            html += '<span>[' + phonetic.symbolValue + ']</span>'
+            html += '<span>[' + phonetic.symbolValue + ']</span>';
           }
 
           var audioID = 'proaudio' + ++noAudios;
@@ -47,12 +48,12 @@ function searchWord(e) {
 
         for (var j = 0; j < means.length; j++) {
           if (j == means.length - 1) {
-            itemStyle = "margin-bottom:5px;"
+            itemStyle = "margin-bottom:5px;";
           }
           else {
-            itemStyle = "margin-bottom:2px;"
+            itemStyle = "margin-bottom:2px;";
           }
-          html += '<div style=' + itemStyle + '>' + means[j].order + '. ' + means[j].value + '</div>'
+          html += '<div style=' + itemStyle + '>' + means[j].order + '. ' + means[j].value + '</div>';
         }
       }
       audio == null;

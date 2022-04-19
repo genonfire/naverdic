@@ -7,7 +7,7 @@ var popupFontsize = '11';
 
 function searchWord(e, word, x, y) {
   const dicURL = "https://en.dict.naver.com/api3/enko/search?m=mobile&query=";
-  const naverURL = "https://dict.naver.com/search.dict?dicQuery="
+  const naverURL = "https://dict.naver.com/search.dict?dicQuery=";
   const queryURL = dicURL + word;
   const linkURL = naverURL + word;
 
@@ -16,8 +16,9 @@ function searchWord(e, word, x, y) {
     action: 'endic',
     url: queryURL,
     }, function(data) {
-      if (!data || !data.searchResultMap)
-        return
+      if (!data || !data.searchResultMap) {
+        return;
+      }
 
     var items = data.searchResultMap.searchResultListMap.WORD.items;
 
@@ -28,7 +29,7 @@ function searchWord(e, word, x, y) {
       for (var i = 0; i < items.length; i++) {
         var word = items[i].expEntry;
         var means = items[i].meansCollector[0].means;
-        var phonetic = items[i].searchPhoneticSymbolList[0]
+        var phonetic = items[i].searchPhoneticSymbolList[0];
         var partOfSpeech = items[i].meansCollector[0].partOfSpeech;
         if (audio == null && items[i].searchPhoneticSymbolList.length > 0) {
           audio = items[i].searchPhoneticSymbolList[0].symbolFile;
@@ -37,12 +38,12 @@ function searchWord(e, word, x, y) {
         html += '<div class="naverdic-wordTitle"><a href="' + linkURL + ' " target="_blank">' + word + '</a>';
 
         if (partOfSpeech) {
-          html += ' [' + partOfSpeech + ']'
+          html += ' [' + partOfSpeech + ']';
         }
 
         if (audio && noAudios == 0) {
           if (phonetic && phonetic.symbolValue) {
-            html += '<span>[' + phonetic.symbolValue + ']</span>'
+            html += '<span>[' + phonetic.symbolValue + ']</span>';
           }
 
           var audioID = 'proaudio' + ++noAudios;
@@ -53,18 +54,18 @@ function searchWord(e, word, x, y) {
 
         for (var j = 0; j < means.length; j++) {
           if (j == means.length - 1) {
-            itemStyle = "margin-bottom:5px;"
+            itemStyle = "margin-bottom:5px;";
           }
           else {
-            itemStyle = "margin-bottom:2px;"
+            itemStyle = "margin-bottom:2px;";
           }
-          html += '<div style=' + itemStyle + '>' + means[j].order + '. ' + means[j].value + '</div>'
+          html += '<div style=' + itemStyle + '>' + means[j].order + '. ' + means[j].value + '</div>';
         }
       }
       audio == null;
       noAudios = 0;
 
-      showFrame(e, html, x, y)
+      showFrame(e, html, x, y);
     }
   });
 }
@@ -86,13 +87,13 @@ function translateWord(e, phrase, top, left, naver_client_id, naver_client_secre
 }
 
 function showFrame(e, datain, top, left) {
-  var div = document.createElement('div')
+  var div = document.createElement('div');
   div.innerHTML = datain;
   div.setAttribute('id', 'popupFrame');
   div.className = 'popupFrame';
   div.style.cssText = "position:absolute;top:" + top + "px;left:" + left + "px;width:" + popupWidth +"px;height:auto;line-height:normal;display:block;z-index:99997;background-color:" + popupColor + ";padding:5px;font-size: " + popupFontsize + "pt;color:black;box-shadow:0 0 3px 3px #888;";
 
-  document.body.appendChild(div)
+  document.body.appendChild(div);
 
   var height = document.getElementById('popupFrame').height;
   var winheight = window.height;
@@ -147,8 +148,9 @@ function openPopup(e, naver_client_id, naver_client_secret, type = 'search') {
   var top = e.clientY + document.querySelector('html').scrollTop + marginY;
   var left = e.clientX - 180 + document.querySelector('html').scrollLeft;
   var clientY = e.clientY;
-  if (e.clientX - 180 < marginX)
+  if (e.clientX - 180 < marginX) {
     left = marginX + document.querySelector('html').scrollLeft;
+  }
 
   var winWidth = window.width;
   if (left + popupWidth > winWidth) {

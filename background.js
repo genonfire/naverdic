@@ -9,17 +9,17 @@ chrome.runtime.onMessage.addListener(function(request, sender, callback) {
   }
   else if (request.action == "papago") {
     $.ajax({
-        type: request.method,
-        url: request.url,
-        crossDomain: false,
-        data: request.data,
-        success: function(data) {
-          callback(data);
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-          alert(XMLHttpRequest);
-          callback();
-        }
+      type: request.method,
+      url: request.url,
+      crossDomain: false,
+      data: request.data,
+      success: function(data) {
+        callback(data);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert(XMLHttpRequest);
+        callback();
+      }
     });
     return true;
   }
