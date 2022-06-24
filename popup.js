@@ -1,65 +1,84 @@
 var noAudios = 0;
 
 function searchWord(e) {
-  const dicURL = "https://en.dict.naver.com/api3/enko/search?m=mobile&query=";
-  const naverURL = "https://dict.naver.com/search.dict?dicQuery=";
-  const query = document.getElementById("dic").value;
+  const dicURL = "https://dict.naver.com/search.dict?dicQuery=";
+  const query = document.getElementById("dic").value.trim();
   const queryURL = dicURL + query;
-  const linkURL = naverURL + query;
+
+  if (query.length == 0) {
+    return;
+  }
 
   chrome.runtime.sendMessage({
     method: 'GET',
     action: 'endic',
     url: queryURL,
     }, function(data) {
-      if (!data || !data.searchResultMap) {
-        return;
+    if (!data) {
+      return;
+    }
+
+    var html = '';
+    var dicHead = data.indexOf('<dl class="dic_search_result">');
+    var dicTail = data.indexOf('</dl>');
+    var dic = data.substring(dicHead, dicTail + 6);
+
+    while(dic) {
+      var dtPos = dic.indexOf('<dt>');
+      if (dtPos < 0) {
+        break;
       }
 
-    var items = data.searchResultMap.searchResultListMap.WORD.items;
+      var dt = dic.substring(dtPos, dic.indexOf('</dt>') + 5);
+      var wordPos = dt.indexOf('<strong>');
+      if (wordPos < 0) {
+        dic = dic.substring(dic.indexOf('</dd>') + 5);
+        continue;
+      }
+      var word = dt.substring(wordPos + 8, dt.indexOf('</strong>'));
 
-    if (items.length > 0) {
-      var html = '';
-      var audio = null;
+      var linkPos = dt.indexOf('<a href=');
+      var linkUrl = null;
+      if (linkPos > -1) {
+        linkURL = dt.substring(linkPos + 9, dt.indexOf('onclick') - 2);
+      }
 
-      for (var i = 0; i < items.length; i++) {
-        var word = items[i].expEntry;
-        var means = items[i].meansCollector[0].means;
-        var phonetic = items[i].searchPhoneticSymbolList[0];
-        var partOfSpeech = items[i].meansCollector[0].partOfSpeech;
-        if (audio == null && items[i].searchPhoneticSymbolList.length > 0) {
-          audio = items[i].searchPhoneticSymbolList[0].symbolFile;
-        }
+      if (linkURL) {
+        html += '<div class="naverdic-wordTitle"><a href="' + linkURL + ' " target="_blank">' + word + '</a>';
+      }
+      else {
+        html += '<div class="naverdic-wordTitle"><a href="#" target="_blank">' + word + '</a>';
+      }
 
-        html += '<div class="wordTitle"><a href="' + linkURL + ' " target="_blank">' + word + '</a>';
-        if (partOfSpeech) {
-          html += ' [' + partOfSpeech + ']';
-        }
-        if (audio && noAudios == 0) {
-          if (phonetic && phonetic.symbolValue) {
-            html += '<span>[' + phonetic.symbolValue + ']</span>';
-          }
+      var phoneticPos = dt.indexOf('<span class="fnt_e25">');
+      if (phoneticPos > -1) {
+        var phoneticHead = dt.substring(phoneticPos);
+        var phonetic = phoneticHead.substring(22, phoneticHead.indexOf('</span>'));
+        html += phonetic;
+      }
 
+      if (noAudios == 0) {
+        var audioPos = dt.indexOf('<a playlist="');
+        if (audioPos > -1) {
+          var audio = dt.substring(audioPos + 13, dt.indexOf('class="play"'));
           var audioID = 'proaudio' + ++noAudios;
           var playAudio = '<span><audio class=naverdic-audio controls src="' + audio + '" id="' + audioID + '" controlslist="nodownload nooption"></audio></span>';
           html += playAudio;
         }
         html += '</div>';
-
-        for (var j = 0; j < means.length; j++) {
-          if (j == means.length - 1) {
-            itemStyle = "margin-bottom:5px;";
-          }
-          else {
-            itemStyle = "margin-bottom:2px;";
-          }
-          html += '<div style=' + itemStyle + '>' + means[j].order + '. ' + means[j].value + '</div>';
-        }
       }
-      audio == null;
-      noAudios = 0;
 
+      var ddPos = dic.indexOf('<dd>');
+      if (ddPos > -1) {
+        var dd = dic.substring(ddPos, dic.indexOf('</dd>') + 5).replace('<dd', '<dd class="naverdic-means"');
+        html += dd;
+      }
+      dic = dic.substring(dic.indexOf('</dd>') + 5);
     }
+
+    audio == null;
+    noAudios = 0;
+
     document.getElementById('content').innerHTML = html;
   });
 }

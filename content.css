@@ -28,8 +28,15 @@ audio.naverdic-audio::-webkit-media-controls-timeline {
 audio.naverdic-audio::-webkit-media-controls-volume-control-container {
   display:none !important;
 }
-
+div.naverdic-wordTitle {
+  margin-bottom:5px;
+  padding-left:1px;
+}
 div.naverdic-wordTitle a {
   text-decoration:none;
   color: black;
+  font-weight:bold;
+}
+dd.naverdic-means {
+  margin-inline-start: 8px;
 }
