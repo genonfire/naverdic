@@ -1,3 +1,6 @@
+# Manifest v2 Deprecated
+Manifest v3 https://github.com/neverworkalone/naverdic
+
 # naverdic
 Chrome 확장 프로그램
 
